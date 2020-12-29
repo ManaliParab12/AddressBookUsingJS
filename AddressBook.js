@@ -117,3 +117,25 @@ try {
 } catch (e) {
     console.error(e);
 }
+
+let addressBook2 = new Array();
+addressBook2.push (
+    {
+    firstName : "Jignesh",
+    lastName : "Tambade",
+    address : "Saigaon",
+    city : "Raigad",
+    state : "Maharashtra",
+    zip : 435657,
+    phoneNumber : 9028363759,
+    email : "jignesht5555@SpeechGrammarList.com",
+
+    toString() {
+        return "\nFirstName : " +this.firstName+ "\nLastName : " +this.lastName+ "\nAddress :" +this.address+ 
+        "\nCity : " +this.city+ "\nState : " +this.state+ "\nZip : " +this.zip+ "\nPhoneNumber : " +this.phoneNumber+ 
+        "\nemail : " +this.email;
+    }
+});
+
+
+console.log("\nNew Contact Added " +addressBook2);
