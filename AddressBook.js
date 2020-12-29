@@ -8,7 +8,7 @@ class AddressBook {
     zip;
     phoneNumber;
     email;
-
+    
     constructor(firstName, lastName, address, city, state, zip, phoneNumber, email) {
     this.firstName = firstName;
     this.lastName = lastName;
@@ -21,20 +21,22 @@ class AddressBook {
     }
 
     get firstName() { 
-        return this._firstName; 
+        return this.firstName; 
     }
-    set firstName(firstName) {
-        let firstNameRegex = RegExp('^[A-Z]{1}[a-z]{3,}$');
-        if(firstNameRegex.test(firstName))
-        this._firstName = firstName;
+    
+    set setfirstName(firstName) {
+        let firstNameRegex = RegExp('^[A-Z]{1}[a-z]{2,}$'); 
+        if(firstNameRegex.test(firstName)) {
+        this.firstName = firstName;
+        }
         else throw 'First Name is Incorrect !';
     }
 
     get lastName() {
         return this._lastName;
     }
-    set lastName(lastName) {
-        let lastNameRegex = RegExp('^[A-Z]{1}[a-z]{3,}$');
+    set setlastName(lastName) {
+        let lastNameRegex = RegExp('^[A-Z]{1}[a-z]{2,}$');
         if(lastNameRegex.test(lastName))
         this._lastName = this.lastName;
         else throw 'Last Name is Incorrect !';
@@ -43,7 +45,7 @@ class AddressBook {
     get address() {
         return this._address;
     }
-    set address(address) {
+    set setaddress(address) {
         let addressRegex = RegExp('[A-Za-z]{4,}$');
         if(addressRegex.test(address))
         this._address = this.address;
@@ -53,7 +55,7 @@ class AddressBook {
     get city() {
         return this._city;
     }
-    set city(city) {
+    set setcity(city) {
         let cityRegex = RegExp('[A-Za-z]{4,}$');
         if(cityRegex.test(city))
         this._city = city;
@@ -63,7 +65,7 @@ class AddressBook {
     get state() {
         return this._state;
     }
-    set state(state) {
+    set setstate(state) {
         let stateRegex = RegExp('[A-Za-z]{4,}$');
         if(stateRegex.test(state))
         this._state = state;
@@ -73,7 +75,7 @@ class AddressBook {
     get zip() {
         return this._zip;
     }
-    set zip(zip) {
+    set setzip(zip) {
         let zipRegex = RegExp('^\d{5}(?:[-\s]\d{4})?$');
         if(zipRegex.test(zip))
         this._zip = zip;
@@ -83,7 +85,7 @@ class AddressBook {
     get phoneNumber() {
         return this._phoneNumber;
     }
-    set phoneNumber(phoneNumber) {
+    set setphoneNumber(phoneNumber) {
         let phoneNumberRegex = RegExp('((91){1})[ ]([98765]{1})([0-9]{9})$');
         if(phoneNumberRegex.test(phoneNumber))
         this._phoneNumber = this.phoneNumber;
@@ -93,7 +95,7 @@ class AddressBook {
     get email() {
         return this._email;
     }
-    set email(email) {
+    set setemail(email) {
         let emailRegex = RegExp('^([a-z0-9\_\.\-]+)@([a-z]+)\.([a-z]{2,5})(\.[a-z]{2,5})?$');
         if(emailRegex.test(email))
         this._email = this.email;
@@ -111,31 +113,17 @@ let addressBook = new AddressBook("Manali", "Parab", "ManvelPada", "Virar", "Mah
 console.log(addressBook.toString());
 let addressBook1 = new AddressBook("Priya", "Thakur", "Math", "Vengurle", "Maharashtra", 432129, 6715324562, "Priya@ab.dgf.df");
 console.log(addressBook1.toString());
+let addressBookMap = new Map();
+addressBookMap.set(addressBook.firstName, addressBook);
+addressBookMap.set(addressBook1.firstName, addressBook1);
 try {
-    addressBook1.firstName = "pr";
+    addressBook1.setfirstName = "pr";
     console.log(addressBook1.toString());
 } catch (e) {
     console.error(e);
 }
 
-let addressBook2 = new Array();
-addressBook2.push (
-    {
-    firstName : "Jignesh",
-    lastName : "Tambade",
-    address : "Saigaon",
-    city : "Raigad",
-    state : "Maharashtra",
-    zip : 435657,
-    phoneNumber : 9028363759,
-    email : "jignesht5555@SpeechGrammarList.com",
-
-    toString() {
-        return "\nFirstName : " +this.firstName+ "\nLastName : " +this.lastName+ "\nAddress :" +this.address+ 
-        "\nCity : " +this.city+ "\nState : " +this.state+ "\nZip : " +this.zip+ "\nPhoneNumber : " +this.phoneNumber+ 
-        "\nemail : " +this.email;
-    }
-});
-
-
-console.log("\nNew Contact Added " +addressBook2);
+let findName = new AddressBook();
+findName = addressBookMap.get("Manali");
+findName.lastName = "Tambade";
+console.log(addressBookMap.get("Manali"));
