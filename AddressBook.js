@@ -112,10 +112,9 @@ class AddressBook {
 let addressBook = new AddressBook("Manali", "Parab", "ManvelPada", "Virar", "Maharashtra", 401305, 8149877402, "manaliparab10@gmail.com");
 console.log(addressBook.toString());
 let addressBook1 = new AddressBook("Priya", "Thakur", "Math", "Vengurle", "Maharashtra", 432129, 6715324562, "Priya@ab.dgf.df");
-console.log(addressBook1.toString());
-let addressBookMap = new Map();
-addressBookMap.set(addressBook.firstName, addressBook);
-addressBookMap.set(addressBook1.firstName, addressBook1);
+//console.log(addressBook1.toString());
+
+//UC2 Validate contact with name
 try {
     addressBook1.setfirstName = "pr";
     console.log(addressBook1.toString());
@@ -123,7 +122,5 @@ try {
     console.error(e);
 }
 
-let findName = new AddressBook();
-findName = addressBookMap.get("Manali");
-findName.lastName = "Tambade";
-console.log(addressBookMap.get("Manali"));
+
+
