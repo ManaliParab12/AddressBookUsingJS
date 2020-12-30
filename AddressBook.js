@@ -112,28 +112,26 @@ class AddressBook {
 let addressBook = new AddressBook("Manali", "Parab", "ManvelPada", "Virar", "Maharashtra", 401305, 8149877402, "manaliparab10@gmail.com");
 console.log(addressBook.toString());
 let addressBook1 = new AddressBook("Priya", "Thakur", "Math", "Vengurle", "Maharashtra", 432129, 6715324562, "Priya@ab.dgf.df");
-//console.log(addressBook1.toString());
-<<<<<<< HEAD
-
-//UC2 Validate contact with name
-=======
 //UC2
->>>>>>> UC3_CreateNewAddressBookArray
 try {
     addressBook1.setfirstName = "pr";
     console.log(addressBook1.toString());
 } catch (e) {
     console.error(e);
 }
-<<<<<<< HEAD
-
-
-
-=======
 //UC3
 let addressBook2 = new AddressBook("Jignesh", "Tambade", "Saigaon", "Raigad", "Maharashtra", 435657, 9028363759,"jignesht5555@Sgmail.com",);
 let addressBookArray= new Array();
 addressBookArray.push(addressBook1);
 addressBookArray.push(addressBook2);
 console.log("\nNew Contact Added to Array " +addressBookArray);
->>>>>>> UC3_CreateNewAddressBookArray
+
+//UC4
+let addressBookMap = new Map();
+addressBookMap.set(addressBook.firstName, addressBook);
+addressBookMap.set(addressBook1.firstName, addressBook1);
+addressBookMap.set(addressBook2.firstName, addressBook2);
+
+let findName = addressBookMap.get("Manali");
+findName.lastName = "Tambade";
+console.log(addressBookMap.get("Manali"));
