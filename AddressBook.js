@@ -122,16 +122,8 @@ try {
 //UC3
 let addressBook2 = new AddressBook("Jignesh", "Tambade", "Saigaon", "Raigad", "Maharashtra", 435657, 9028363759,"jignesht5555@Sgmail.com",);
 let addressBookArray= new Array();
+addressBookArray.push(addressBook);
 addressBookArray.push(addressBook1);
 addressBookArray.push(addressBook2);
 console.log("\nNew Contact Added to Array " +addressBookArray);
 
-//UC4
-let addressBookMap = new Map();
-addressBookMap.set(addressBook.firstName, addressBook);
-addressBookMap.set(addressBook1.firstName, addressBook1);
-addressBookMap.set(addressBook2.firstName, addressBook2);
-
-let findName = addressBookMap.get("Manali");
-findName.lastName = "Tambade";
-console.log(addressBookMap.get("Manali"));
