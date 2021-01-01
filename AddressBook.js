@@ -122,6 +122,7 @@ try {
 //UC3
 let addressBook2 = new AddressBook("Jignesh", "Tambade", "Saigaon", "Raigad", "Maharashtra", 435657, 9028363759,"jignesht5555@Sgmail.com",);
 let addressBookArray= new Array();
+addressBookArray.push(addressBook);
 addressBookArray.push(addressBook1);
 addressBookArray.push(addressBook2);
 console.log("\nNew Contact Added to Array " +addressBookArray);
@@ -168,3 +169,16 @@ addressBookArray.forEach(addressBook => {
 
 editPerson();
 
+//UC5
+function deleteContact() {
+    let userInput = prompt("Enter name to Delete Entry : ");
+    addressBookArray.forEach(addressBook => {
+        if(addressBook.firstName == userInput) {
+            addressBookArray.splice(addressBookArray.indexOf(addressBook), 1)
+            console.log("Record Deleted");
+            console.log(addressBookArray);
+        }
+    });
+}
+
+deleteContact();
