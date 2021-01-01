@@ -112,18 +112,74 @@ class AddressBook {
 let addressBook = new AddressBook("Manali", "Parab", "ManvelPada", "Virar", "Maharashtra", 401305, 8149877402, "manaliparab10@gmail.com");
 console.log(addressBook.toString());
 let addressBook1 = new AddressBook("Priya", "Thakur", "Math", "Vengurle", "Maharashtra", 432129, 6715324562, "Priya@ab.dgf.df");
-console.log(addressBook1.toString());
-let addressBookMap = new Map();
-addressBookMap.set(addressBook.firstName, addressBook);
-addressBookMap.set(addressBook1.firstName, addressBook1);
+
+//UC2
 try {
     addressBook1.setfirstName = "pr";
     console.log(addressBook1.toString());
 } catch (e) {
     console.error(e);
 }
+//UC3
+let addressBook2 = new AddressBook("Jignesh", "Tambade", "Saigaon", "Raigad", "Maharashtra", 435657, 9028363759,"jignesht5555@Sgmail.com",);
+let addressBookArray= new Array();
+addressBookArray.push(addressBook);
+addressBookArray.push(addressBook1);
+addressBookArray.push(addressBook2);
+console.log("\nNew Contact Added to Array " +addressBookArray);
 
-let findName = new AddressBook();
-findName = addressBookMap.get("Manali");
-findName.lastName = "Tambade";
-console.log(addressBookMap.get("Manali"));
+//UC4
+const prompt = require('prompt-sync')({sigint: true});
+
+function editPerson() {
+let userInput = prompt("Enter name to update Contact : ");
+
+addressBookArray.forEach(addressBook => {
+    if(addressBook.firstName == userInput) {
+    console.log("1.PhoneNumber" + "\n2.Address" + "\n3.quit");
+    var choice = prompt("Select any option to edit :")
+
+    switch(choice) {
+        case "1" :
+            phoneNumber = prompt("Enter new Phone Number :");
+            addressBook.phoneNumber = phoneNumber;
+            console.log(addressBook.toString());
+            console.log("Phone number updated")
+        
+            break;
+        case "2" :
+            city = prompt("Enter new city : ");
+            addressBook.city = city;
+            console.log(addressBook.toString());
+
+            state = prompt("Enter new state : ");
+            addressBook.state = state;
+            console.log(addressBook.toString());
+
+            zip = prompt("Enter new zip : ");
+            addressBook.zip = zip;
+            console.log(addressBook.toString());
+            break;
+        default :
+            console.log("Incorrect choice");
+            break;
+    }  
+}
+}); 
+}
+
+editPerson();
+
+//UC5
+function deleteContact() {
+    let userInput = prompt("Enter name to Delete Entry : ");
+    addressBookArray.forEach(addressBook => {
+        if(addressBook.firstName == userInput) {
+            addressBookArray.splice(addressBookArray.indexOf(addressBook), 1)
+            console.log("Record Deleted");
+            console.log(addressBookArray);
+        }
+    });
+}
+
+deleteContact();
